@@ -1072,6 +1072,78 @@ summary:focus-visible {
 }
 
 /* ============================================
+   GALLERY SECTION
+   ============================================ */
+
+.section-gallery {
+    background: var(--color-white);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.gallery-item {
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    border: 1px solid var(--color-light);
+}
+
+.gallery-item:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.gallery-item figcaption {
+    padding: var(--spacing-md);
+    background: var(--color-lighter);
+}
+
+.gallery-item figcaption p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.gallery-item figcaption em {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+}
+
+.gallery-item-clickable a {
+    display: block;
+    text-decoration: none;
+}
+
+.gallery-item-clickable:hover {
+    border-color: var(--color-accent);
+}
+
+.gallery-item-clickable:hover figcaption em {
+    color: var(--color-accent);
+}
+
+/* ============================================
    NEWS FEED SECTION
    ============================================ */
 
