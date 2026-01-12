@@ -1070,3 +1070,339 @@ summary:focus-visible {
     outline: 3px solid var(--color-accent);
     outline-offset: 2px;
 }
+
+/* ============================================
+   NEWS FEED SECTION
+   ============================================ */
+
+.section-news {
+    background: var(--color-lighter);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+    .news-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.news-main h2,
+.news-sidebar h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.75rem;
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: var(--spacing-sm);
+}
+
+.news-feed,
+.blog-feed {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.news-item {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--color-primary);
+    transition: all var(--transition-base);
+}
+
+.news-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
+}
+
+.news-date,
+.blog-date {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.news-item h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.4;
+}
+
+.news-item h3 a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.news-item h3 a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+.news-source {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-weight: 400;
+}
+
+.news-item p {
+    margin-bottom: 0;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.news-archive,
+.news-external,
+.blog-archive {
+    font-size: 0.875rem;
+    margin-top: var(--spacing-md);
+}
+
+.news-archive a,
+.news-external a,
+.blog-archive a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.news-archive a:hover,
+.news-external a:hover,
+.blog-archive a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+.news-external {
+    color: var(--color-text-light);
+}
+
+/* Blog Feed in Sidebar */
+.news-sidebar {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    height: fit-content;
+}
+
+.blog-item {
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-light);
+}
+
+.blog-item:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.blog-item h3 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.blog-item h3 a {
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.blog-item h3 a:hover {
+    color: var(--color-accent);
+}
+
+/* ============================================
+   DONATION MODAL
+   ============================================ */
+
+.donation-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--spacing-md);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.donation-modal {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: white;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background var(--transition-fast);
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body {
+    padding: var(--spacing-xl);
+}
+
+.modal-lead {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-body p {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+}
+
+.modal-lesson {
+    background: var(--color-lighter);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-warning);
+    margin: var(--spacing-lg) 0;
+}
+
+.modal-lesson h3 {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-lesson ul {
+    margin-bottom: 0;
+}
+
+.modal-lesson li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.modal-lesson strong {
+    color: var(--color-accent);
+}
+
+.modal-real-cause {
+    background: linear-gradient(135deg, rgba(45, 80, 22, 0.1) 0%, rgba(74, 122, 44, 0.1) 100%);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-primary);
+    margin: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.modal-real-cause h3 {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-donate-btn {
+    display: inline-block;
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1.125rem;
+}
+
+.modal-cause-description {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-bottom: 0;
+}
+
+.modal-footer {
+    text-align: center;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-light);
+    margin-top: var(--spacing-lg);
+}
+
+.modal-footer em {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+/* Responsive modal styles */
+@media (max-width: 480px) {
+    .donation-modal-overlay {
+        padding: 0;
+    }
+
+    .donation-modal {
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .modal-header {
+        border-radius: 0;
+    }
+
+    .modal-body {
+        padding: var(--spacing-md);
+    }
+}
