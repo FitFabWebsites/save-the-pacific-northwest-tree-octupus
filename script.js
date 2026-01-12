@@ -1,5 +1,55 @@
+// Visitor Counter
+function initVisitorCounter() {
+    const COUNTER_KEY = 'treeOctopusVisitorCount';
+    const LAST_VISIT_KEY = 'treeOctopusLastVisit';
+
+    // Get current count from localStorage, default to 12847 for initial count
+    let visitorCount = localStorage.getItem(COUNTER_KEY);
+    if (!visitorCount) {
+        // Start with a realistic base number for an educational site
+        visitorCount = 12847;
+    } else {
+        visitorCount = parseInt(visitorCount);
+    }
+
+    // Check if this is a new visit (more than 30 minutes since last visit)
+    const lastVisit = localStorage.getItem(LAST_VISIT_KEY);
+    const now = Date.now();
+    const thirtyMinutes = 30 * 60 * 1000;
+
+    if (!lastVisit || (now - parseInt(lastVisit)) > thirtyMinutes) {
+        // Increment counter for new visit
+        visitorCount++;
+        localStorage.setItem(COUNTER_KEY, visitorCount);
+    }
+
+    // Update last visit timestamp
+    localStorage.setItem(LAST_VISIT_KEY, now.toString());
+
+    // Display the counter with animation
+    const counterElement = document.getElementById('visitor-count');
+    if (counterElement) {
+        // Animate the counter
+        let currentCount = visitorCount - 50;
+        const increment = Math.ceil(50 / 30); // Animate over ~30 frames
+
+        const animateCounter = () => {
+            if (currentCount < visitorCount) {
+                currentCount += increment;
+                if (currentCount > visitorCount) currentCount = visitorCount;
+                counterElement.textContent = currentCount.toLocaleString();
+                requestAnimationFrame(animateCounter);
+            }
+        };
+
+        animateCounter();
+    }
+}
+
 // Donation Form Handler - Educational Message
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize visitor counter
+    initVisitorCounter();
     // Get the donation button
     const donateButton = document.querySelector('.btn-donate-large');
 
